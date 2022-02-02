@@ -58,9 +58,7 @@ describe("Gilded Rose", () => {
     gildedRose.updateQuality();
     expect(gildedRose.items[0].quality).toBe(3);
   })
-  // * “Conjured” items degrade in Quality twice as fast as normal items
 
- 
 
 });
 
