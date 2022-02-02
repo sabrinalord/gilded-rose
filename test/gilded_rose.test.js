@@ -44,12 +44,23 @@ describe("Gilded Rose", () => {
     gildedRose.updateQuality();
     expect(gildedRose.items[0].quality).toBe(8);
   })
-  // * “Sulfuras”, being a legendary item, never has to be sold or decreases in Quality
 
-  // * “Backstage passes”, like aged brie, increases in Quality as it’s SellIn value approaches; 
-  // Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but 
-  // Quality drops to 0 after the concert
+  it('drops the quality of backstage passes to 0 when the sellIn date is 0', () => {
+    let items = new Item("Backstage passes to a TAFKAL80ETC concert", 0, 5);
+    const gildedRose = new Shop([items]);
+    gildedRose.updateQuality();
+    expect(gildedRose.items[0].quality).toBe(0);
+  })
 
+  it('degrades the quality of Conjured items by 2 after each daily update', () => {
+    let items = new Item("Conjured Mana Cake", 5, 5);
+    const gildedRose = new Shop([items]);
+    gildedRose.updateQuality();
+    expect(gildedRose.items[0].quality).toBe(3);
+  })
+  // * “Conjured” items degrade in Quality twice as fast as normal items
+
+ 
 
 });
 
