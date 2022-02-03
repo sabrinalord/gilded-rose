@@ -14,10 +14,14 @@ class Shop {
   updateQuality() {
    
     this.items.forEach(item => {
-      const isAgedBrie = item.name == 'Aged Brie'
-      const isSulfuras = item.name.includes('Sulfuras')
-      const isBackstagePass = item.name.includes('Backstage')
-      const isConjured = item.name.includes('Conjured')
+      const isAgedBrie = item.name == 'Aged Brie';
+      const isSulfuras = item.name.includes('Sulfuras');
+      const isBackstagePass = item.name.includes('Backstage');
+      const isConjured = item.name.includes('Conjured');
+      const has10DaysOrLessToSell = item.sellIn <= 10
+      const qualityLowerThan50 = item.quality < 50
+
+      
 
       
 
@@ -31,16 +35,16 @@ class Shop {
           }
         } 
       } else {
-        if (item.quality < 50) {
+        if (qualityLowerThan50) {
           item.quality = item.quality + 1;
           if (isBackstagePass) {
-            if (item.sellIn < 11) {
-              if (item.quality < 50) {
+            if ( has10DaysOrLessToSell ) {
+              if (qualityLowerThan50) {
                 item.quality = item.quality + 1;
               }
             }
             if (item.sellIn < 6) {
-              if (item.quality < 50) {
+              if (qualityLowerThan50) {
                 item.quality = item.quality + 1;
               }
             }
@@ -62,7 +66,7 @@ class Shop {
             item.quality = item.quality - item.quality;
           }
         } else {
-          if (item.quality < 50) {
+          if (qualityLowerThan50) {
             item.quality = item.quality + 1;
           }
         }
