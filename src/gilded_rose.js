@@ -1,5 +1,7 @@
 const normalItemUpdate = require("../src/normal_item_update");
 const conjuredItemUpdate = require("../src/conjured_item_update");
+const agedBrieItemUpdate = require("../src/aged_brie_item_update");
+
 
 class Item {
   constructor(name, sellIn, quality){
@@ -35,15 +37,11 @@ class Shop {
         normalItemUpdate(item)
       }
 
-
       else if (isConjured) {
         conjuredItemUpdate(item)
         }
       else if (isAgedBrie) {
-          if (item.quality < 50) {
-            item.quality ++
-            item.sellIn --
-          }
+        agedBrieItemUpdate(item)
         }
        else if (isBackstagePass) {
           if (item.quality < 50) {
