@@ -4,6 +4,31 @@ const {Shop, Item} = require("../src/gilded_rose");
 // Item(name, sellIn, quality)
 
 describe("Gilded Rose", () => {
+
+
+  it('does not allow normal items to drop quality below 0', () => {
+    let items = new Item("+5 Dexterity Vest", 10, 0);
+    const gildedRose = new Shop([items]);
+    gildedRose.updateQuality();
+    expect(gildedRose.items[0].quality).toBe(0)  
+    });
+
+  it("reduces quality twice as fast once the sell by date has passed", () => {
+    let items = new Item("+5 Dexterity Vest", 0, 2);
+    const gildedRose = new Shop([items]);
+    gildedRose.updateQuality();
+    expect(gildedRose.items[0].sellIn).toBe(-1)  
+    expect(gildedRose.items[0].quality).toBe(0)  
+
+  });
+
+  it("the quality of an item can never be more than 50", () => {
+    let items = new Item("Aged Brie", 5, 50);
+    const gildedRose = new Shop([items]);
+    gildedRose.updateQuality();
+    expect(gildedRose.items[0].quality).not.toBe(51)  
+  });
+
   it("should store items", () => {
     let items = new Item("Test Item", 5, 0);
     const gildedRose = new Shop([items]);
