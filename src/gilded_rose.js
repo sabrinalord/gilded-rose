@@ -12,7 +12,15 @@ class Shop {
   }
 
   updateQuality() {
+   
     this.items.forEach(item => {
+      const isAgedBrie = item.name == 'Aged Brie'
+      const isSulfuras = item.name.includes('Sulfuras')
+      const isBackstagePass = item.name.includes('Backstage')
+      const isConjured = item.name.includes('Conjured')
+
+      
+
       if (item.name != 'Aged Brie' && item.name != 'Backstage passes to a TAFKAL80ETC concert') {
         if (item.quality > 0) {
           if (item.name.includes('Conjured')) {
@@ -21,7 +29,7 @@ class Shop {
           if (item.name != 'Sulfuras, Hand of Ragnaros' && !item.name.includes('Conjured') ) {
             item.quality = item.quality - 1;
           }
-        }
+        } 
       } else {
         if (item.quality < 50) {
           item.quality = item.quality + 1;
