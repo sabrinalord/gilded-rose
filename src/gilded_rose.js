@@ -1,6 +1,8 @@
 const normalItemUpdate = require("../src/normal_item_update");
 const conjuredItemUpdate = require("../src/conjured_item_update");
 const agedBrieItemUpdate = require("../src/aged_brie_item_update");
+const backstagePassItemUpdate = require("../src/backstage_pass_update");
+
 
 
 class Item {
@@ -26,10 +28,7 @@ class Shop {
       const isSulfuras = item.name.includes('Sulfuras');
       const isBackstagePass = item.name.includes('Backstage');
       const isConjured = item.name.includes('Conjured');
-      const hasMoreThan10daysToSell = item.sellIn > 10;
-      const has10DaysOrLessToSell = item.sellIn <= 10 && item.sellIn > 0;
-      const has5DaysOrLessToSell = item.sellIn <= 5 && item.sellIn > 0;
-      const has0daysLeftToSell = item.sellIn == 0;
+
 
       const normalItem = !isAgedBrie && !isSulfuras && !isConjured && !isBackstagePass
 
@@ -40,25 +39,12 @@ class Shop {
       else if (isConjured) {
         conjuredItemUpdate(item)
         }
+
       else if (isAgedBrie) {
         agedBrieItemUpdate(item)
         }
        else if (isBackstagePass) {
-          if (item.quality < 50) {
-            if (hasMoreThan10daysToSell) {
-              item.quality ++
-              item.sellIn --
-             }
-            else if (has10DaysOrLessToSell) {
-               item.quality = item.quality + 2
-               if (has5DaysOrLessToSell) {
-                item.quality = item.quality + 1
-              }
-            }
-            else if(has0daysLeftToSell){
-              item.quality = 0
-            }
-          }
+        backstagePassItemUpdate(item)
         }
 
     });
