@@ -1,7 +1,7 @@
 const normalItemUpdate = require("../src/normal_item_update");
 const conjuredItemUpdate = require("../src/conjured_item_update");
-const agedBrieItemUpdate = require("../src/aged_brie_item_update");
-const backstagePassItemUpdate = require("../src/backstage_pass_update");
+const agedBrieItemUpdate = require("./agedBrie_item_update");
+const backstagePassItemUpdate = require("./backstagePass_item_update");
 
 
 class Item {
