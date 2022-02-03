@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for conjured_item_update.js</title>
+    <title>Code coverage report for agedBrie_item_update.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> conjured_item_update.js</h1>
+        <h1><a href="index.html">All files</a> agedBrie_item_update.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -77,14 +77,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span></td><td class="text"><pre class="prettyprint lang-js">const conjuredItemUpdate = (item) =&gt; {
-  if (item.quality &gt; 0) {
-    item.quality = item.quality - 2
+<span class="cline-any cline-yes">5x</span></td><td class="text"><pre class="prettyprint lang-js">const agedBrieItemUpdate = (item) =&gt; {
+  if (item.quality &lt; 50) {
+    item.quality ++
     item.sellIn --
   }
 }
 &nbsp;
-module.exports = conjuredItemUpdate;</pre></td></tr></table></pre>
+module.exports = agedBrieItemUpdate;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
