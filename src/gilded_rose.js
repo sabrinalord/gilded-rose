@@ -4,7 +4,6 @@ const agedBrieItemUpdate = require("../src/aged_brie_item_update");
 const backstagePassItemUpdate = require("../src/backstage_pass_update");
 
 
-
 class Item {
   constructor(name, sellIn, quality){
     this.name = name;
@@ -12,7 +11,6 @@ class Item {
     this.quality = quality;
   }
 }
-
 
 
 class Shop {
@@ -28,8 +26,6 @@ class Shop {
       const isSulfuras = item.name.includes('Sulfuras');
       const isBackstagePass = item.name.includes('Backstage');
       const isConjured = item.name.includes('Conjured');
-
-
       const normalItem = !isAgedBrie && !isSulfuras && !isConjured && !isBackstagePass
 
       if (normalItem) {
@@ -43,9 +39,10 @@ class Shop {
       else if (isAgedBrie) {
         agedBrieItemUpdate(item)
         }
-       else if (isBackstagePass) {
+
+      else if (isBackstagePass) {
         backstagePassItemUpdate(item)
-        }
+      }
 
     });
 

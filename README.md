@@ -34,6 +34,15 @@ Install dependencies
 npm install
 ```
 
+## My Approach
+This was a challenging kata and I spent some time drawing out the different rules and interactions on paper. After this I wrote unit tests to cover different scenarios. 
+I started refactoring by extracting the logic into boolean variables. This made it easier to read. 
+I then attempted to remove all negative logic such as !isAgedBrie by swapping over the logic. This ended up with a lot of confusion so I went back and pseudo coded the differnt types of products.
+By including 'normal items' as a type of product it helped me to separate the logic between product types. 
+
+I extracted each method into it's own file in keeping with SRP. If the Gilded Rose wanted to add new products I think it would make it easier to isolate the code. 
+
+
 ## Running tests
 
 To run all tests
@@ -53,3 +62,4 @@ To generate test coverage report
 ```sh
 npm run test:coverage
 ```
+
