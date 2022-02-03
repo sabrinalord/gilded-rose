@@ -14,11 +14,10 @@ describe("Gilded Rose", () => {
     });
 
   it("reduces quality twice as fast once the sell by date has passed", () => {
-    let items = new Item("+5 Dexterity Vest", 0, 2);
+    let items = new Item("+5 Dexterity Vest", 0, 4);
     const gildedRose = new Shop([items]);
     gildedRose.updateQuality();
-    expect(gildedRose.items[0].sellIn).toBe(-1)  
-    expect(gildedRose.items[0].quality).toBe(0)  
+    expect(gildedRose.items[0].quality).toBe(2)  
 
   });
 
@@ -64,7 +63,7 @@ describe("Gilded Rose", () => {
   })
   
   it('increases the quality of backstage passes by 3 when the sellIn date is 5 or less', () => {
-    let items = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 5);
+    let items = new Item("Backstage passes to a TAFKAL80ETC concert", 3, 5);
     const gildedRose = new Shop([items]);
     gildedRose.updateQuality();
     expect(gildedRose.items[0].quality).toBe(8);
