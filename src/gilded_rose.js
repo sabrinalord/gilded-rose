@@ -6,12 +6,18 @@ class Item {
   }
 }
 
-// const normalItemUpdate = (item) => {
-//   if (item.quality > 0) {
-//     item.quality --
-//     item.sellIn --
-//   }
-// }
+const normalItemUpdate = (item) => {
+  if (item.quality > 0) {
+    if (item.sellIn >= 1) {
+      item.quality --
+      item.sellIn --
+    }
+    else if (item.sellIn <= 0) {
+      item.quality = item.quality - 2
+      item.sellIn --
+    }
+  }
+}
 
 class Shop {
   constructor(items=[]){
@@ -31,20 +37,10 @@ class Shop {
       const has5DaysOrLessToSell = item.sellIn <= 5 && item.sellIn > 0;
       const has0daysLeftToSell = item.sellIn == 0;
 
-
       const normalItem = !isAgedBrie && !isSulfuras && !isConjured && !isBackstagePass
 
       if (normalItem) {
-        if (item.quality > 0) {
-          if (item.sellIn >= 1) {
-            item.quality --
-            item.sellIn --
-          }
-          else if (item.sellIn <= 0) {
-            item.quality = item.quality - 2
-            item.sellIn --
-          }
-        }
+        normalItemUpdate(item)
       }
       else if (isConjured) {
           if (item.quality > 0) {
