@@ -1,6 +1,5 @@
 const {Shop, Item} = require("../src/gilded_rose");
 
-
 // Item(name, sellIn, quality)
 
 describe("Gilded Rose", () => {

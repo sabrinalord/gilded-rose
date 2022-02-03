@@ -1,3 +1,6 @@
+const normalItemUpdate = require("../src/normal_item_update");
+const conjuredItemUpdate = require("../src/conjured_item_update");
+
 class Item {
   constructor(name, sellIn, quality){
     this.name = name;
@@ -6,18 +9,7 @@ class Item {
   }
 }
 
-const normalItemUpdate = (item) => {
-  if (item.quality > 0) {
-    if (item.sellIn >= 1) {
-      item.quality --
-      item.sellIn --
-    }
-    else if (item.sellIn <= 0) {
-      item.quality = item.quality - 2
-      item.sellIn --
-    }
-  }
-}
+
 
 class Shop {
   constructor(items=[]){
@@ -42,11 +34,10 @@ class Shop {
       if (normalItem) {
         normalItemUpdate(item)
       }
+
+
       else if (isConjured) {
-          if (item.quality > 0) {
-            item.quality = item.quality - 2
-            item.sellIn --
-          }
+        conjuredItemUpdate(item)
         }
       else if (isAgedBrie) {
           if (item.quality < 50) {
